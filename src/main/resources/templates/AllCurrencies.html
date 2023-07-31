@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link
+        rel="stylesheet"
+        th:href="@{../static/css/style.css}"
+        href="../static/css/style.css"
+        type="text/css">
+  <title>Money Exchange Service</title>
+</head>
+<body>
+
+<h1>
+  TEXT
+</h1>
+
+<table class="styled-table">
+    <thead>
+    <tr>
+      <th>Code</th>
+      <th>Name</th>
+      <th>Sign</th>
+    </tr>
+    </thead>
+
+    <tbody>
+      <tr th:each="curr: ${currencies}">
+        <td th:text="${curr.code}"/>
+        <td th:text="${curr.name}" />
+        <td th:text="${curr.sign}" />
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>
