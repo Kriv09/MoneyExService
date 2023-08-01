@@ -25,5 +25,10 @@ public class CurrencyService {
         return currencies;
     }
 
+    public Currency saveCurrency(Currency currency)
+    {
+        return currnecyRepository.save(currency);
+    }
+
 
 }
