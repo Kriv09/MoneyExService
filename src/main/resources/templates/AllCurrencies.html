@@ -7,6 +7,40 @@
         th:href="@{css/style.css}"
         type="text/css">
   <title>Money Exchange Service</title>
+    <style>
+        .button-37 {
+            background-color: #13aa52;
+            border: 1px solid #13aa52;
+            border-radius: 4px;
+            box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
+            box-sizing: border-box;
+            color: #fff;
+            cursor: pointer;
+            font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            outline: none;
+            outline: 0;
+            padding: 10px 25px;
+            text-align: center;
+            transform: translateY(0);
+            transition: transform 150ms, box-shadow 150ms;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+
+        .button-37:hover {
+            box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
+            transform: translateY(-2px);
+        }
+
+        @media (min-width: 768px) {
+            .button-37 {
+                padding: 10px 30px;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -19,6 +53,8 @@
 <div style="text-align: center">
     <p style="color: #009879; font-size: 25px"> All Currencies </p>
 </div>
+
+
 <table class="styled-table" >
     <thead>
     <tr>
@@ -35,6 +71,41 @@
         <td th:text="${curr.sign}" />
       </tr>
     </tbody>
-  </table>
+</table>
+
+<div class="button_wrapper" style="text-align: center; margin-top: 15px;">
+    <a th:href="@{/currencies/addNewCurrency}">
+        <input class="button-37" type="button" value="Add Currency"/>
+    </a>
+</div>
+
+<hr style="color: green; width: 80%; height: 4px;">
+
+<div style="text-align: center">
+    <p style="color: #009879; font-size: 25px"> Exchange Rates </p>
+</div>
+
+<table class="styled-table" >
+    <thead>
+    <tr>
+        <th>CurrencyPair [ / ]</th>
+        <th>Rate</th>
+    </tr>
+    </thead>
+
+    <tbody>
+        <tr th:each="ExRate: ${ExRates}">
+            <td th:text="${ExRate.sourceCurrencyCode} + '/' + ${ExRate.destCurrencyCode}"/>
+            <td th:text="${ExRate.conversion}"/>
+         </tr>
+    </tbody>
+</table>
+
+<div class="button_wrapper" style="text-align: center; margin-top: 15px;">
+    <a th:href="@{/currencies/addNewExchangeRate}">
+        <input class="button-37" type="button" value="Add Exchange Rate"/>
+    </a>
+</div>
+
 </body>
 </html>

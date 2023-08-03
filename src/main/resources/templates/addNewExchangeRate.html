@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport">
+
+  <title> Add new Exchange Rate </title>
+  <link rel="stylesheet"
+        th:href="@{css/currency-create.css}"
+        type="text/css">
+  <style>
+    input{width: 100%; background: none; border: 1px solid #fff; border-radius: 3px; padding: 6px 15px; box-sizing: border-box; margin-bottom: 20px; font-size: 16px; color: #009879;}
+
+    input[type="submit"]{ background: #bac675; border: 0; cursor: pointer; color: #3e3d3d;}
+    input[type="submit"]:hover{ background: #a4b15c; transition: .6s;}
+
+
+    .selectdiv {
+      position: relative;
+      /*Don't really need this just for demo styling*/
+
+      float: left;
+      min-width: 200px;
+      margin: 50px 33%;
+    }
+
+    /* IE11 hide native button (thanks Matt!) */
+    select::-ms-expand {
+      display: none;
+    }
+
+    .selectdiv:after {
+      content: '<>';
+      font: 17px "Consolas", monospace;
+      color: #333;
+      -webkit-transform: rotate(90deg);
+      -moz-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+      transform: rotate(90deg);
+      right: 11px;
+      /*Adjust for position however you want*/
+
+      top: 18px;
+      padding: 0 0 2px;
+      border-bottom: 1px solid #999;
+      /*left line */
+
+      position: absolute;
+      pointer-events: none;
+    }
+
+    .selectdiv select {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      /* Add some styling */
+
+      display: block;
+      width: 100%;
+      max-width: 320px;
+      height: 50px;
+      float: right;
+      margin: 5px 0px;
+      padding: 0px 24px;
+      font-size: 16px;
+      line-height: 1.75;
+      color: #333;
+      background-color: #ffffff;
+      background-image: none;
+      border: 1px solid #cccccc;
+      -ms-word-break: normal;
+      word-break: normal;
+    }
+
+    *{margin: 0; padding: 0;}
+    body{background: #ecf1f4; font-family: sans-serif;}
+
+    .form-wrap{ width: 450px; background: #3e3d3d; padding: 40px 20px; box-sizing: border-box; position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%);}
+    h1{text-align: center; color: #fff; font-weight: normal; margin-bottom: 20px;}
+
+    input{width: 100%; background: none; border: 1px solid #fff; border-radius: 3px; padding: 6px 15px; box-sizing: border-box; margin-bottom: 20px; font-size: 16px; color: #009879;}
+
+    input[type="submit"]{ background: #bac675; border: 0; cursor: pointer; color: #3e3d3d;}
+    input[type="submit"]:hover{ background: #a4b15c; transition: .6s;}
+
+    ::placeholder{color: #fff;}
+
+
+  </style>
+</head>
+
+
+<body>
+
+
+<div class="form-wrap">
+
+  <form role="form" method="post" th:action="@{/currencies/addNewExchangeRate}">
+
+    <h1>Add new Exchange Rate</h1>
+
+      <div class="selectdiv">
+          <select th:field="*{ExchangeRate.sourceCurrencyCode}">
+            <option th:each="CurrencyName : ${AllCurrencies} " th:value="${CurrencyName.code}" th:text="${CurrencyName.code}">
+
+            </option>
+          </select>
+      </div>
+
+      <div class="selectdiv">
+          <select th:field="*{ExchangeRate.destCurrencyCode}">
+            <option th:each="CurrencyName : ${AllCurrencies} " th:value="${CurrencyName.code}" th:text="${CurrencyName.code}" >
+
+            </option>
+          </select>
+      </div>
+
+    <input class="Conversion" type="number" id="totalAmt" th:field="*{ExchangeRate.conversion}">
+
+
+    <input type="submit" value="Save" >
+  </form>
+
+</div>
+
+
+</body>
+</html>

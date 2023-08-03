@@ -66,6 +66,8 @@
 }
 
 .Control_Button:hover,
+
+
 .Control_Button:focus {
     background-color: #8dc525;
     box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;

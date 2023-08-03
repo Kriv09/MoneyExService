@@ -9,8 +9,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/currencies")
 public class CurrencyController {
     private final CurrencyService currencyService;
 
@@ -20,14 +22,15 @@ public class CurrencyController {
     }
 
 
-    @GetMapping("/currencies")
+    @GetMapping
     public String currencies(Model model)
     {
         model.addAttribute("currencies",currencyService.findAllCurrencies());
+        model.addAttribute("ExRates",currencyService.findAllExchangeRates());
         return "AllCurrencies";
     }
 
-    @GetMapping("/currencies/addNewCurrency")
+    @GetMapping("/addNewCurrency")
     public String createCurrency(Model Model)
     {
         Currency currency = new Currency();
@@ -35,10 +38,13 @@ public class CurrencyController {
         return "currency-create";
     }
 
-    @PostMapping("/currencies/addNewCurrency")
+    @PostMapping("/addNewCurrency")
     public String saveCurrency(@ModelAttribute("currency") Currency currency)
     {
         currencyService.saveCurrency(currency);
         return "redirect:/currencies";
     }
+
+
+
 }
