@@ -107,5 +107,34 @@
     </a>
 </div>
 
+<hr style="color: green; width: 80%; height: 4px;">
+
+<div style="text-align: center">
+    <p style="color: #009879; font-size: 25px"> Your Exchanges </p>
+</div>
+
+<table class="styled-table" >
+    <thead>
+    <tr>
+        <th>CurrencyPair [ / ]</th>
+        <th>Amount</th>
+        <th>Result</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="UserExchange: ${AllUserExchanges}">
+        <td th:text="${UserExchange.currencyPair}"/>
+        <td th:text="${UserExchange.sourceCurrencyAmount}"/>
+        <td th:text="${UserExchange.resultExchanging}"/>
+    </tr>
+    </tbody>
+</table>
+
+<div class="button_wrapper" style="text-align: center; margin-top: 15px;">
+    <a th:href="@{/currencies/exchange}">
+        <input class="button-37" type="button" value="Exchange Currencies"/>
+    </a>
+</div>
 </body>
 </html>
