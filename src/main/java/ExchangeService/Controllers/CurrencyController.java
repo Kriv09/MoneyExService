@@ -67,6 +67,7 @@ public class CurrencyController {
             Conversion = currencyService.getConversion(SrcCurrencyId,DestCurrencyId);
         } catch (ExchangeRateNotFoundException e) {
             System.err.println(e.getMessage());
+            return "exchangerate-notexist";
         }
         currencyExchangePair.setResultExchanging(Conversion * currencyExchangePair.getSourceCurrencyAmount());
         currencyService.saveCurrencyExchangedPair(currencyExchangePair);

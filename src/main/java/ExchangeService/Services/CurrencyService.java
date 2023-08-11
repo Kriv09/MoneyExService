@@ -122,7 +122,7 @@ public class CurrencyService {
             ResultSet rs= stmt.executeQuery(selectQuery);
             if(rs.next())
                 Conversion = rs.getDouble("Conversion");
-            if(Conversion == null)
+            if(Conversion == 0.0)
                 throw new ExchangeRateNotFoundException();
         } catch (SQLException e) {
             System.err.println(e.getMessage());
