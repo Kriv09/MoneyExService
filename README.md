@@ -5,7 +5,7 @@ This web application is developer to simplify your money operation, more detaile
 To Run this app you need:
 
 -- Firstly -- 
-Open anb run file [DB-init.sql]
+Open and run file [DB-init.sql]
 
 Secondly: 
 1. Download repo to your pc and load maven dependecies 
